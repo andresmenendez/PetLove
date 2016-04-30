@@ -1,0 +1,184 @@
+﻿@{ 
+    Layout = null; 
+} 
+<!DOCTYPEhtml> 
+<html> 
+<head> 
+<metaname="viewport"content="width=device-width"/> 
+<title>Google Maps com javaScript</title> 
+<h1>Mapa Google Maps</h1> 
+
+</head> 
+<body onload="getLocation();"> 
+logradouro: <input id="logradouro" type="text" /> <br /> 
+numero: <input id="numero" type="text" /> <br /> 
+bairro: <input id="bairro" type="text" /> <br /> 
+cidade: <input id="ciadde" type="text" /> <br /> 
+<input id="marcar" type="button" value="Marcar" onclick="chamaMarcacaoOutroIcone(logradouro.value,numero.value,bairro.value, ciadde.value)" /> 
+
+<div id="map_canvas" style="width: 95%; height: 432px"> 
+</div>
+ </body>
+
+</html>
+<script type="text/javascript"src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCxRXOBjQ8mHYYjtpCCuz_djqpoLOslCy8&sensor=false">
+</script> 
+
+<script type="text/javascript"  language="javascript">
+    //função para pegar localização atual
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            alert('Este navegador ou esta versão não suporta a ativação de localização.');
+        }
+    }
+
+    function showPosition(position) {
+        alert('Latitude: ' + position.coords.latitude +
+    '\nLongitude: ' + position.coords.longitude);
+        chamaMapa(position.coords.latitude, position.coords.longitude);
+        FazMarcacao(position.coords.latitude, position.coords.longitude);
+    }
+
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                alert('Usuário negou a requisição de localização.');
+                break;
+            case error.POSITION_UNAVAILABLE:
+                alert('A informação da localização está indisponível.');
+                break;
+            case error.TIMEOUT:
+                alert('Tempo de resposta para a ativação da localização terminou.');
+                break;
+            case error.UNKNOWN_ERROR:
+                break;
+        }
+    }
+</script>
+
+<!-- aqui a tagJavaScript contando o endereco do googleMaps e com a chave de acesso que adquirimos 
+junto a conta do Google este começo: http://maps.googleapis.com/maps/api/js?key= é padrao, apos ele, devemos inserir 
+nossa chave e finalizar com: &sensor=false '--> 
+<script type="text/javascript" language="javascript">
+    //variavel cria para que seja criado o mapa Google Maps 
+    var map = null;
+    //Essa e a funcao que criara o mapa GoogleMaps 
+    function chamaMapa(lat, lng) {
+        //aqui vamos definir as coordenadas de latitude e longitude no qual 
+        //sera exibido o nosso mapa 
+        var latlng = new google.maps.LatLng(lat, lng);
+        //DEFINE A LOCALIZAÇÃO EXATA DO MAPA 
+        //aqui vamos configurar o mapa, como o zoom, o centro do mapa, etc 
+        var myOptions = { zoom: 15,
+            //utilizaremos o zoom 15 
+            center: latlng,
+            //aqui a nossa variavel constando latitude e 
+            //longitude ja declarada acima 
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        //criando o mapa dentro da div com o id="map_canvas" que ja criamos 
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        //DEFINE AS COORDENADAS do ponto exato - CENTRALIZAÇÃO DO MAPA 
+        map.setCenter(new google.maps.LatLng(lat, lng));
+    }
+
+</script> 
+<script type="text/javascript"  language="javascript">
+    function FazMarcacao(lat, long) {
+
+        var icon = {
+            url: "../../Images/ic_cao_mapa-web.png", // url
+            scaledSize: new google.maps.Size(50, 50), // scaled size
+            origin: new google.maps.Point(0, 0), // origin
+            anchor: new google.maps.Point(0, 0) // anchor
+        };
+
+        var latlong = lat + "," + long;
+        //colocando na conficuracao necessaria (lat,long) 
+        var myLatLgn = new google.maps.LatLng(lat, long);
+        //criando variavel tipo google.maps.LatLng e 
+        //passando como parametro a latitude e longitude 
+        //na configuracao: latitude,longitude. 
+
+        //aproximando o mapa, aumentando o zoom 
+        map.setZoom(17);
+        //fazendo a marcacao, usando o latitude e longitude da variavel criada acima 
+        var marker = new google.maps.Marker({ position: myLatLgn, map: map, icon: icon });
+        //acima a variavel e o comando que faz a marcação 
+
+        //leva o mapa para a posicao da marcacao 
+        //map.setCenter(myLatLgn);
+    } 
+</script>
+
+<script type="text/javascript"  language="javascript">
+    function chamaMarcacaoEndereco(logradoro, numero, bairro, cidade) {
+        //colocando o endereco no padrao correto 
+        var endereco = logradoro + ", " + numero + ", " + bairro + " - " + cidade;
+        //MUDANDO O ZOOM DO MAPA 
+        map.setZoom(17);
+        //Buscando lat e log por endereco (no formato: nome rua, numero, bairro - cidade) 
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ 'address': endereco },
+    function (results, status) {
+        //se o retorno de status for ok 
+        if (status = google.maps.GeocoderStatus.OK) {
+            //pega o retorno de result, que sao a latitude e longitude 
+            var latlng = results[0].geometry.location;
+            //faz marcacao no mapa 
+            var marker = new google.maps.Marker({ position: latlng, map: map });
+            map.setCenter(latlng);
+            //leva o mapa para a posicao da marcacao 
+        } 
+    });
+    }
+</script>
+
+<script type="text/javascript"  language="javascript">
+    function chamaMarcacaoOutroIcone(logradoro, numero, bairro, cidade) {
+        var endereco = logradoro + ", " + numero + ", " + bairro + " - " + cidade;
+        //MUDANDO O ZOOM DO MAPA 
+        map.setZoom(16);
+
+        var icon = {
+            url: "../../Images/ic_gato-web.png", // url
+            scaledSize: new google.maps.Size(50, 50), // scaled size
+            origin: new google.maps.Point(0, 0), // origin
+            anchor: new google.maps.Point(0, 0) // anchor
+        };
+        //AQUI A VARIAVEL RECEBENDO A IMAGEM QUE SUBISTITUIRÁ O ICONE PADRÃO 
+        //Busca lat e log por endereco (no formato: nome rua, numero, bairro - cidade) 
+        geocoder = new google.maps.Geocoder(); geocoder.geocode({ 'address': endereco },
+    function (results, status) {
+        if (status = google.maps.GeocoderStatus.OK) {
+            latlng = results[0].geometry.location;
+            //faz marcacao no mapa 
+            marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                icon: icon
+            });
+            //ADICIONANDO O COMANDO ICON RECEBENDO A VARIAVEL IMAGEM 
+            map.setCenter(latlng);
+            //leva o mapa para a posicao da marcacao e coloca informacao na marcacao 
+            var infowindow = new google.maps.InfoWindow(), marker;
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent('<p>Event Name: ' + this.title + '</p>' +
+            '<p>Event Type: ' + this.etype + '</p>' +
+            '<p>Cause: ' + this.cause + '</p>' +
+            '<p>Date: ' + this.date + '</p>' +
+                '<p>Time: ' + this.time + '</p>' +
+                '<button onclick="myFunction()">Click me</button>' +
+                '@Html.ActionLink("Home", "Index", "Home")');
+                    infowindow.open(map, marker);
+                    //window.location = "/Home/Sobre"; 
+                }
+            })
+            (marker))
+        } 
+    });
+    }
+</script>

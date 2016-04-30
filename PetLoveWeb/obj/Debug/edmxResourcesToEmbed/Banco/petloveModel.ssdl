@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="petloveModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="petloveModelStoreContainer">
+    <EntitySet Name="tb_animal" EntityType="petloveModel.Store.tb_animal" store:Type="Tables" Schema="petlove" />
+    <EntitySet Name="tb_favoritos" EntityType="petloveModel.Store.tb_favoritos" store:Type="Tables" Schema="petlove" />
+    <EntitySet Name="tb_fotos" EntityType="petloveModel.Store.tb_fotos" store:Type="Tables" Schema="petlove" />
+    <EntitySet Name="tb_racas" EntityType="petloveModel.Store.tb_racas" store:Type="Tables" Schema="petlove" />
+    <EntitySet Name="tb_usuario" EntityType="petloveModel.Store.tb_usuario" store:Type="Tables" Schema="petlove" />
+    <AssociationSet Name="fk_tb_animal_tb_racas1" Association="petloveModel.Store.fk_tb_animal_tb_racas1">
+      <End Role="tb_racas" EntitySet="tb_racas" />
+      <End Role="tb_animal" EntitySet="tb_animal" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tb_animal_tb_usuario1" Association="petloveModel.Store.fk_tb_animal_tb_usuario1">
+      <End Role="tb_usuario" EntitySet="tb_usuario" />
+      <End Role="tb_animal" EntitySet="tb_animal" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tb_usuario_has_tb_animal_tb_usuario" Association="petloveModel.Store.fk_tb_usuario_has_tb_animal_tb_usuario">
+      <End Role="tb_usuario" EntitySet="tb_usuario" />
+      <End Role="tb_favoritos" EntitySet="tb_favoritos" />
+    </AssociationSet>
+  </EntityContainer>
+  <!--Errors Found During Generation:
+      warning 6035: The relationship 'fk_tb_favoritos_tb_animal1' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+      warning 6035: The relationship 'fk_tb_fotos_tb_animal1' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+      -->
+  <EntityType Name="tb_animal">
+    <Key>
+      <PropertyRef Name="IDAnimal" />
+      <PropertyRef Name="IDUsuario" />
+      <PropertyRef Name="IDRaca" />
+    </Key>
+    <Property Name="IDAnimal" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="Categoria" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="Nascimento" Type="datetime" />
+    <Property Name="Sexo" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="IDUsuario" Type="int" Nullable="false" />
+    <Property Name="IDRaca" Type="int" Nullable="false" />
+    <Property Name="Latitude" Type="float" Nullable="false" />
+    <Property Name="Longitude" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_favoritos">
+    <Key>
+      <PropertyRef Name="IDUsuario" />
+    </Key>
+    <Property Name="IDUsuario" Type="int" Nullable="false" />
+    <Property Name="IDAnimal" Type="int" />
+    <Property Name="IDAnimalFavorito" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_fotos">
+    <Key>
+      <PropertyRef Name="IDFoto" />
+    </Key>
+    <Property Name="IDFoto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Foto" Type="blob" Nullable="false" />
+    <Property Name="IDAnimal" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_racas">
+    <Key>
+      <PropertyRef Name="IDRaca" />
+    </Key>
+    <Property Name="IDRaca" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="60" />
+    <Property Name="Tipo" Type="char" Nullable="false" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="tb_usuario">
+    <Key>
+      <PropertyRef Name="IDUsuario" />
+    </Key>
+    <Property Name="IDUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="Senha" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="Telefone" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <Association Name="fk_tb_animal_tb_racas1">
+    <End Role="tb_racas" Type="petloveModel.Store.tb_racas" Multiplicity="1" />
+    <End Role="tb_animal" Type="petloveModel.Store.tb_animal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_racas">
+        <PropertyRef Name="IDRaca" />
+      </Principal>
+      <Dependent Role="tb_animal">
+        <PropertyRef Name="IDRaca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tb_animal_tb_usuario1">
+    <End Role="tb_usuario" Type="petloveModel.Store.tb_usuario" Multiplicity="1" />
+    <End Role="tb_animal" Type="petloveModel.Store.tb_animal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_usuario">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="tb_animal">
+        <PropertyRef Name="IDUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tb_usuario_has_tb_animal_tb_usuario">
+    <End Role="tb_usuario" Type="petloveModel.Store.tb_usuario" Multiplicity="1" />
+    <End Role="tb_favoritos" Type="petloveModel.Store.tb_favoritos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_usuario">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="tb_favoritos">
+        <PropertyRef Name="IDUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

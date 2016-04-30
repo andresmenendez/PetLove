@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="petloveModelStoreContainer" CdmEntityContainer="petloveEntities">
+    <EntitySetMapping Name="tb_animal">
+      <EntityTypeMapping TypeName="petloveModel.tb_animal">
+        <MappingFragment StoreEntitySet="tb_animal">
+          <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Nascimento" ColumnName="Nascimento" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+          <ScalarProperty Name="IDRaca" ColumnName="IDRaca" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_favoritos">
+      <EntityTypeMapping TypeName="petloveModel.tb_favoritos">
+        <MappingFragment StoreEntitySet="tb_favoritos">
+          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+          <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
+          <ScalarProperty Name="IDAnimalFavorito" ColumnName="IDAnimalFavorito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_fotos">
+      <EntityTypeMapping TypeName="petloveModel.tb_fotos">
+        <MappingFragment StoreEntitySet="tb_fotos">
+          <ScalarProperty Name="IDFoto" ColumnName="IDFoto" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_racas">
+      <EntityTypeMapping TypeName="petloveModel.tb_racas">
+        <MappingFragment StoreEntitySet="tb_racas">
+          <ScalarProperty Name="IDRaca" ColumnName="IDRaca" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_usuario">
+      <EntityTypeMapping TypeName="petloveModel.tb_usuario">
+        <MappingFragment StoreEntitySet="tb_usuario">
+          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
