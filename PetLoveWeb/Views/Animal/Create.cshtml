@@ -1,0 +1,41 @@
+﻿@model PetLoveWeb.Models.AnimalModel
+
+@{
+    ViewBag.Title = "Novo Animal";
+}
+
+<h2>Novo Animal</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Criar Novo Animal</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NomeAnimal)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.NomeAnimal)
+            @Html.ValidationMessageFor(model => model.NomeAnimal)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nascimento)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Nascimento)
+            @Html.ValidationMessageFor(model => model.Nascimento)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Retornar", "Index")
+</div>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PetLoveWeb.Models.AnimalModel>
+
+@{
+    ViewBag.Title = "Meus Animais";
+}
+
+<h2>Meus Animais</h2>
+
+@using GridMvc.Html
+@using GridMvc.Sorting
+
+<h2>Turmas</h2>
+<p>
+    @Html.ActionLink("Novo Animal", "Create")
+</p>
+
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+
+<div class="box-content">
+    @Html.Grid(Model).Columns(columns =>
+    {
+
+        columns.Add(animal => animal.NomeAnimal)
+                .Titled("Nome do Animal")
+                .ThenSortByDescending(turma => turma.NomeAnimal)
+                .SetWidth(400)
+                .Filterable(true);
+
+        columns.Add(animal => animal.Categoria)
+                .Titled("Categoria")
+                .SetWidth(200)
+                .Filterable(true);
+
+        columns.Add(animal => animal.Sexo)
+                .Titled("Sexo")
+                .SetWidth(200)
+                .Filterable(true);
+
+        columns.Add(animal => animal.Nascimento.ToShortDateString())
+                .Titled("Data de Nascimento")
+                .SetWidth(250)
+                .Filterable(true);
+
+        columns.Add(animal => animal.Nome_Raca)
+                .Titled("Raça")
+                .SetWidth(250)
+                .Filterable(true);
+
+    }).WithPaging(5).Sortable()
+</div>
+

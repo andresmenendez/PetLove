@@ -7,7 +7,7 @@ using PetLoveWeb.Models;
 using PetLoveWeb.Banco;
 
 
-namespace SQLEscola.Gerenciadores
+namespace PetLoveWeb.Gerenciadores
 {
     /// <summary>
     /// Gerencia todas as regras de negócio da entidade Usuario
