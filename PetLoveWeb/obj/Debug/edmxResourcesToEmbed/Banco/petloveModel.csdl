@@ -25,15 +25,15 @@
       <PropertyRef Name="IDUsuario" />
       <PropertyRef Name="IDRaca" />
     </Key>
-    <Property Name="IDAnimal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nome" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
-    <Property Name="Categoria" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
-    <Property Name="Nascimento" Type="DateTime" />
-    <Property Name="Sexo" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
-    <Property Name="IDUsuario" Type="Int32" Nullable="false" />
-    <Property Name="IDRaca" Type="Int32" Nullable="false" />
-    <Property Name="Latitude" Type="Single" Nullable="false" />
-    <Property Name="Longitude" Type="Single" Nullable="false" />
+    <Property Type="Int32" Name="IDAnimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Nome" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Categoria" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="Nascimento" />
+    <Property Type="String" Name="Sexo" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="IDUsuario" Nullable="false" />
+    <Property Type="Int32" Name="IDRaca" Nullable="false" />
+    <Property Type="Single" Name="Latitude" Nullable="false" />
+    <Property Type="Single" Name="Longitude" Nullable="false" />
     <NavigationProperty Name="tb_racas" Relationship="petloveModel.fk_tb_animal_tb_racas1" FromRole="tb_animal" ToRole="tb_racas" />
     <NavigationProperty Name="tb_usuario" Relationship="petloveModel.fk_tb_animal_tb_usuario1" FromRole="tb_animal" ToRole="tb_usuario" />
   </EntityType>
@@ -41,44 +41,44 @@
     <Key>
       <PropertyRef Name="IDUsuario" />
     </Key>
-    <Property Name="IDUsuario" Type="Int32" Nullable="false" />
-    <Property Name="IDAnimal" Type="Int32" />
-    <Property Name="IDAnimalFavorito" Type="Int32" Nullable="false" />
+    <Property Type="Int32" Name="IDUsuario" Nullable="false" />
+    <Property Type="Int32" Name="IDAnimal" />
+    <Property Type="Int32" Name="IDAnimalFavorito" Nullable="false" />
     <NavigationProperty Name="tb_usuario" Relationship="petloveModel.fk_tb_usuario_has_tb_animal_tb_usuario" FromRole="tb_favoritos" ToRole="tb_usuario" />
   </EntityType>
   <EntityType Name="tb_fotos">
     <Key>
       <PropertyRef Name="IDFoto" />
     </Key>
-    <Property Name="IDFoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Foto" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-    <Property Name="IDAnimal" Type="Int32" Nullable="false" />
+    <Property Type="Int32" Name="IDFoto" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Binary" Name="Foto" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Type="Int32" Name="IDAnimal" Nullable="false" />
   </EntityType>
   <EntityType Name="tb_racas">
     <Key>
       <PropertyRef Name="IDRaca" />
     </Key>
-    <Property Name="IDRaca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nome" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
-    <Property Name="Tipo" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="IDRaca" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Nome" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Tipo" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tb_animal" Relationship="petloveModel.fk_tb_animal_tb_racas1" FromRole="tb_racas" ToRole="tb_animal" />
   </EntityType>
   <EntityType Name="tb_usuario">
     <Key>
       <PropertyRef Name="IDUsuario" />
     </Key>
-    <Property Name="IDUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="Nome" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-    <Property Name="Email" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
-    <Property Name="Senha" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
-    <Property Name="Telefone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="IDUsuario" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Nome" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Senha" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Telefone" MaxLength="15" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tb_animal" Relationship="petloveModel.fk_tb_animal_tb_usuario1" FromRole="tb_usuario" ToRole="tb_animal" />
     <NavigationProperty Name="tb_favoritos" Relationship="petloveModel.fk_tb_usuario_has_tb_animal_tb_usuario" FromRole="tb_usuario" ToRole="tb_favoritos" />
   </EntityType>
   <Association Name="fk_tb_animal_tb_racas1">
-    <End Role="tb_racas" Type="petloveModel.tb_racas" Multiplicity="1" />
-    <End Role="tb_animal" Type="petloveModel.tb_animal" Multiplicity="*" />
+    <End Type="petloveModel.tb_racas" Role="tb_racas" Multiplicity="1" />
+    <End Type="petloveModel.tb_animal" Role="tb_animal" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tb_racas">
         <PropertyRef Name="IDRaca" />
@@ -89,8 +89,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="fk_tb_animal_tb_usuario1">
-    <End Role="tb_usuario" Type="petloveModel.tb_usuario" Multiplicity="1" />
-    <End Role="tb_animal" Type="petloveModel.tb_animal" Multiplicity="*" />
+    <End Type="petloveModel.tb_usuario" Role="tb_usuario" Multiplicity="1" />
+    <End Type="petloveModel.tb_animal" Role="tb_animal" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tb_usuario">
         <PropertyRef Name="IDUsuario" />
@@ -101,8 +101,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="fk_tb_usuario_has_tb_animal_tb_usuario">
-    <End Role="tb_usuario" Type="petloveModel.tb_usuario" Multiplicity="1" />
-    <End Role="tb_favoritos" Type="petloveModel.tb_favoritos" Multiplicity="0..1" />
+    <End Type="petloveModel.tb_usuario" Role="tb_usuario" Multiplicity="1" />
+    <End Type="petloveModel.tb_favoritos" Role="tb_favoritos" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="tb_usuario">
         <PropertyRef Name="IDUsuario" />

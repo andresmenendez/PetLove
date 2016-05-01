@@ -111,7 +111,14 @@ namespace PetLoveWeb.Controllers
         [Authorize]
         public ActionResult ChangePassword()
         {
-            return View();
+            ChangePasswordModel model = new ChangePasswordModel();
+            string userId = Membership.GetUser().ProviderUserKey.ToString();
+            UsuarioModel user = GerenciadorUsuario.GetInstance().Obter(Convert.ToInt32(userId));
+            model.NomeCompleto = user.Nome;
+            model.UserName = user.Usuario;
+            model.Telefone = user.Telefone;
+            model.Email = user.Email;
+            return View(model);
         }
 
         //
@@ -139,7 +146,15 @@ namespace PetLoveWeb.Controllers
 
                 if (changePasswordSucceeded)
                 {
-                    return RedirectToAction("ChangePasswordSuccess");
+                    string userId = Membership.GetUser().ProviderUserKey.ToString();
+                    UsuarioModel user = GerenciadorUsuario.GetInstance().Obter(Convert.ToInt32(userId));
+                    user.Nome = model.NomeCompleto;
+                    user.Telefone = model.Telefone;
+                    user.Email = model.Email;
+                    user.Senha = "banco";
+                    GerenciadorUsuario gu = new GerenciadorUsuario();
+                    gu.Editar(user);
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -167,16 +182,16 @@ namespace PetLoveWeb.Controllers
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
-                    return "User name already exists. Please enter a different user name.";
+                    return "Nome do usuário já existe. Favor utilizar um nome diferente.";
 
                 case MembershipCreateStatus.DuplicateEmail:
-                    return "A user name for that e-mail address already exists. Please enter a different e-mail address.";
+                    return "Um nome de usuário para este e-mail já doi usado. Favor digitar outro e-mail válido.";
 
                 case MembershipCreateStatus.InvalidPassword:
-                    return "The password provided is invalid. Please enter a valid password value.";
+                    return "A senha está inválida. A senha deve conter pelo menos 6 caracteres e um símbolo especial como '@', '!' etc.";
 
                 case MembershipCreateStatus.InvalidEmail:
-                    return "The e-mail address provided is invalid. Please check the value and try again.";
+                    return "E-mail inválido. Favor digitar outro e-mail válido.";
 
                 case MembershipCreateStatus.InvalidAnswer:
                     return "The password retrieval answer provided is invalid. Please check the value and try again.";
@@ -185,16 +200,16 @@ namespace PetLoveWeb.Controllers
                     return "The password retrieval question provided is invalid. Please check the value and try again.";
 
                 case MembershipCreateStatus.InvalidUserName:
-                    return "The user name provided is invalid. Please check the value and try again.";
+                    return "Nome do usuário inválido. . Favor digitar outro nome de usuário válido.";
 
                 case MembershipCreateStatus.ProviderError:
-                    return "The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+                    return "Não foi possível realizar seu cadastro no sistema. Tente novamente mais tarde. Se o problema persistir, contacte o Administrador do sistema.";
 
                 case MembershipCreateStatus.UserRejected:
                     return "The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
 
                 default:
-                    return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+                    return "Erro desconhecido. Favor contactar o administrador so sistema.";
             }
         }
         #endregion

@@ -38,7 +38,7 @@
                 @Html.LabelFor(m => m.Email)
             </div>
             <div class="editor-field">
-                @Html.TextBoxFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { style = "width:350px" })
                 @Html.ValidationMessageFor(m => m.Email)
             </div>
 
@@ -62,7 +62,7 @@
                 @Html.Label("Telefone")
             </div>
             <div class="editor-field">
-                @Html.PasswordFor(m => m.Telefone)
+                @Html.TextBoxFor(m => m.Telefone)
             </div>
 
             <p>

@@ -149,6 +149,7 @@ namespace SQLEscola.Gerenciadores
             usuarioE.Email = usuarioModel.Email;
             usuarioE.Usuario = usuarioModel.Usuario;
             usuarioE.Telefone = usuarioModel.Telefone;
+            usuarioE.Senha = usuarioModel.Senha;
         }
     }
 }

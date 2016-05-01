@@ -1,26 +1,26 @@
 ﻿@model PetLoveWeb.Models.LogOnModel
 
 @{
-    ViewBag.Title = "Log On";
+    ViewBag.Title = "Entrar";
 }
 
-<h2>Log On</h2>
+<h2>Entrar</h2>
 <p>
-    Please enter your user name and password. @Html.ActionLink("Register", "Register") if you don't have an account.
+    Por favor, digite seu usuário e senha. @Html.ActionLink("Cadastre-se", "Register"), caso não tenha uma conta ainda.
 </p>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
-@Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+@Html.ValidationSummary(true, "Não foi possível realizar o Login. Favor corrija os erros e tente novamente.")
 
 @using (Html.BeginForm()) {
     <div>
         <fieldset>
-            <legend>Account Information</legend>
+            <legend>Informações da Conta</legend>
 
             <div class="editor-label">
-                @Html.LabelFor(m => m.UserName)
+                @Html.Label("Nome do Usuário")
             </div>
             <div class="editor-field">
                 @Html.TextBoxFor(m => m.UserName)
@@ -28,7 +28,7 @@
             </div>
 
             <div class="editor-label">
-                @Html.LabelFor(m => m.Password)
+                @Html.Label("Senha")
             </div>
             <div class="editor-field">
                 @Html.PasswordFor(m => m.Password)
@@ -37,11 +37,11 @@
 
             <div class="editor-label">
                 @Html.CheckBoxFor(m => m.RememberMe)
-                @Html.LabelFor(m => m.RememberMe)
+                @Html.Label("Lembrar-me")
             </div>
 
             <p>
-                <input type="submit" value="Log On" />
+                <input class="but but-primary but-shadow but-rc" type="submit" value="Entrar" />
             </p>
         </fieldset>
     </div>

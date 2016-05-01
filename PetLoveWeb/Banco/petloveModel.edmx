@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="petloveModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="petloveModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="petloveModelStoreContainer">
           <EntitySet Name="tb_animal" EntityType="petloveModel.Store.tb_animal" store:Type="Tables" Schema="petlove" />
           <EntitySet Name="tb_favoritos" EntityType="petloveModel.Store.tb_favoritos" store:Type="Tables" Schema="petlove" />
@@ -115,8 +115,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="petloveModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -145,15 +144,15 @@
             <PropertyRef Name="IDUsuario" />
             <PropertyRef Name="IDRaca" />
           </Key>
-          <Property Name="IDAnimal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="Categoria" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
-          <Property Name="Nascimento" Type="DateTime" />
-          <Property Name="Sexo" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
-          <Property Name="IDUsuario" Type="Int32" Nullable="false" />
-          <Property Name="IDRaca" Type="Int32" Nullable="false" />
-          <Property Name="Latitude" Type="Single" Nullable="false" />
-          <Property Name="Longitude" Type="Single" Nullable="false" />
+          <Property Type="Int32" Name="IDAnimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nome" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Categoria" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Nascimento" />
+          <Property Type="String" Name="Sexo" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IDUsuario" Nullable="false" />
+          <Property Type="Int32" Name="IDRaca" Nullable="false" />
+          <Property Type="Single" Name="Latitude" Nullable="false" />
+          <Property Type="Single" Name="Longitude" Nullable="false" />
           <NavigationProperty Name="tb_racas" Relationship="petloveModel.fk_tb_animal_tb_racas1" FromRole="tb_animal" ToRole="tb_racas" />
           <NavigationProperty Name="tb_usuario" Relationship="petloveModel.fk_tb_animal_tb_usuario1" FromRole="tb_animal" ToRole="tb_usuario" />
         </EntityType>
@@ -161,44 +160,44 @@
           <Key>
             <PropertyRef Name="IDUsuario" />
           </Key>
-          <Property Name="IDUsuario" Type="Int32" Nullable="false" />
-          <Property Name="IDAnimal" Type="Int32" />
-          <Property Name="IDAnimalFavorito" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="IDUsuario" Nullable="false" />
+          <Property Type="Int32" Name="IDAnimal" />
+          <Property Type="Int32" Name="IDAnimalFavorito" Nullable="false" />
           <NavigationProperty Name="tb_usuario" Relationship="petloveModel.fk_tb_usuario_has_tb_animal_tb_usuario" FromRole="tb_favoritos" ToRole="tb_usuario" />
         </EntityType>
         <EntityType Name="tb_fotos">
           <Key>
             <PropertyRef Name="IDFoto" />
           </Key>
-          <Property Name="IDFoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Foto" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="IDAnimal" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="IDFoto" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Binary" Name="Foto" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Type="Int32" Name="IDAnimal" Nullable="false" />
         </EntityType>
         <EntityType Name="tb_racas">
           <Key>
             <PropertyRef Name="IDRaca" />
           </Key>
-          <Property Name="IDRaca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
-          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="IDRaca" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nome" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Tipo" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tb_animal" Relationship="petloveModel.fk_tb_animal_tb_racas1" FromRole="tb_racas" ToRole="tb_animal" />
         </EntityType>
         <EntityType Name="tb_usuario">
           <Key>
             <PropertyRef Name="IDUsuario" />
           </Key>
-          <Property Name="IDUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="Nome" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
-          <Property Name="Senha" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="Telefone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="IDUsuario" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Nome" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Senha" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Telefone" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tb_animal" Relationship="petloveModel.fk_tb_animal_tb_usuario1" FromRole="tb_usuario" ToRole="tb_animal" />
           <NavigationProperty Name="tb_favoritos" Relationship="petloveModel.fk_tb_usuario_has_tb_animal_tb_usuario" FromRole="tb_usuario" ToRole="tb_favoritos" />
         </EntityType>
         <Association Name="fk_tb_animal_tb_racas1">
-          <End Role="tb_racas" Type="petloveModel.tb_racas" Multiplicity="1" />
-          <End Role="tb_animal" Type="petloveModel.tb_animal" Multiplicity="*" />
+          <End Type="petloveModel.tb_racas" Role="tb_racas" Multiplicity="1" />
+          <End Type="petloveModel.tb_animal" Role="tb_animal" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tb_racas">
               <PropertyRef Name="IDRaca" />
@@ -209,8 +208,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_tb_animal_tb_usuario1">
-          <End Role="tb_usuario" Type="petloveModel.tb_usuario" Multiplicity="1" />
-          <End Role="tb_animal" Type="petloveModel.tb_animal" Multiplicity="*" />
+          <End Type="petloveModel.tb_usuario" Role="tb_usuario" Multiplicity="1" />
+          <End Type="petloveModel.tb_animal" Role="tb_animal" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tb_usuario">
               <PropertyRef Name="IDUsuario" />
@@ -221,8 +220,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_tb_usuario_has_tb_animal_tb_usuario">
-          <End Role="tb_usuario" Type="petloveModel.tb_usuario" Multiplicity="1" />
-          <End Role="tb_favoritos" Type="petloveModel.tb_favoritos" Multiplicity="0..1" />
+          <End Type="petloveModel.tb_usuario" Role="tb_usuario" Multiplicity="1" />
+          <End Type="petloveModel.tb_favoritos" Role="tb_favoritos" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="tb_usuario">
               <PropertyRef Name="IDUsuario" />
@@ -232,7 +231,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -241,54 +240,54 @@
           <EntitySetMapping Name="tb_animal">
             <EntityTypeMapping TypeName="petloveModel.tb_animal">
               <MappingFragment StoreEntitySet="tb_animal">
-                <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-                <ScalarProperty Name="Nascimento" ColumnName="Nascimento" />
-                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
-                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
-                <ScalarProperty Name="IDRaca" ColumnName="IDRaca" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
                 <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="IDRaca" ColumnName="IDRaca" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Nascimento" ColumnName="Nascimento" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tb_favoritos">
             <EntityTypeMapping TypeName="petloveModel.tb_favoritos">
               <MappingFragment StoreEntitySet="tb_favoritos">
-                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
-                <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
                 <ScalarProperty Name="IDAnimalFavorito" ColumnName="IDAnimalFavorito" />
+                <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tb_fotos">
             <EntityTypeMapping TypeName="petloveModel.tb_fotos">
               <MappingFragment StoreEntitySet="tb_fotos">
-                <ScalarProperty Name="IDFoto" ColumnName="IDFoto" />
-                <ScalarProperty Name="Foto" ColumnName="Foto" />
                 <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="IDFoto" ColumnName="IDFoto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tb_racas">
             <EntityTypeMapping TypeName="petloveModel.tb_racas">
               <MappingFragment StoreEntitySet="tb_racas">
-                <ScalarProperty Name="IDRaca" ColumnName="IDRaca" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="IDRaca" ColumnName="IDRaca" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tb_usuario">
             <EntityTypeMapping TypeName="petloveModel.tb_usuario">
               <MappingFragment StoreEntitySet="tb_usuario">
-                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Senha" ColumnName="Senha" />
                 <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -313,22 +312,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="petloveModel">
-        <EntityTypeShape EntityType="petloveModel.tb_animal" Width="1.5" PointX="3" PointY="3.125" Height="3.1340950520833335" IsExpanded="true" />
-        <EntityTypeShape EntityType="petloveModel.tb_favoritos" Width="1.5" PointX="3" PointY="7.625" Height="1.7879850260416665" IsExpanded="true" />
-        <EntityTypeShape EntityType="petloveModel.tb_fotos" Width="1.5" PointX="5.75" PointY="1.5" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="petloveModel.tb_racas" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7879850260416657" IsExpanded="true" />
-        <EntityTypeShape EntityType="petloveModel.tb_usuario" Width="1.5" PointX="0.75" PointY="3.375" Height="2.5571907552083339" IsExpanded="true" />
-        <AssociationConnector Association="petloveModel.fk_tb_animal_tb_racas1" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="1.6439925130208328" />
-          <ConnectorPoint PointX="3.75" PointY="1.6439925130208328" />
+        <EntityTypeShape EntityType="petloveModel.tb_animal" Width="1.5" PointX="3" PointY="3.125" Height="3.1340950520833322" />
+        <EntityTypeShape EntityType="petloveModel.tb_favoritos" Width="1.5" PointX="3" PointY="7.625" Height="1.7879850260416665" />
+        <EntityTypeShape EntityType="petloveModel.tb_fotos" Width="1.5" PointX="5.75" PointY="1.5" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="petloveModel.tb_racas" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="petloveModel.tb_usuario" Width="1.5" PointX="0.75" PointY="3.375" Height="2.5571907552083357" />
+        <AssociationConnector Association="petloveModel.fk_tb_animal_tb_racas1" >
+          <ConnectorPoint PointX="2.25" PointY="1.6439925130208337" />
+          <ConnectorPoint PointX="3.75" PointY="1.6439925130208337" />
           <ConnectorPoint PointX="3.75" PointY="3.125" />
         </AssociationConnector>
-        <AssociationConnector Association="petloveModel.fk_tb_animal_tb_usuario1" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="4.6535953776041667" />
-          <ConnectorPoint PointX="3" PointY="4.6535953776041667" />
+        <AssociationConnector Association="petloveModel.fk_tb_animal_tb_usuario1" >
+          <ConnectorPoint PointX="2.25" PointY="4.6535953776041676" />
+          <ConnectorPoint PointX="3" PointY="4.6535953776041676" />
         </AssociationConnector>
-        <AssociationConnector Association="petloveModel.fk_tb_usuario_has_tb_animal_tb_usuario" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="5.9321907552083335" />
+        <AssociationConnector Association="petloveModel.fk_tb_usuario_has_tb_animal_tb_usuario" >
+          <ConnectorPoint PointX="1.5" PointY="5.9321907552083353" />
           <ConnectorPoint PointX="1.5" PointY="8.5189925130208337" />
           <ConnectorPoint PointX="3" PointY="8.5189925130208337" />
         </AssociationConnector>

@@ -4,3 +4,10 @@ C:\Users\Andrés\Documents\Visual Studio 2010\Projects\PetLoveWeb\PetLoveWeb\bin
 C:\Users\Andrés\Documents\Visual Studio 2010\Projects\PetLoveWeb\PetLoveWeb\bin\EntityFramework.xml
 C:\Users\Andrés\Documents\Visual Studio 2010\Projects\PetLoveWeb\PetLoveWeb\obj\Debug\PetLoveWeb.dll
 C:\Users\Andrés\Documents\Visual Studio 2010\Projects\PetLoveWeb\PetLoveWeb\obj\Debug\PetLoveWeb.pdb
+C:\Users\Andrés\Desktop\PetLove\PetLove\PetLoveWeb\bin\PetLoveWeb.dll
+C:\Users\Andrés\Desktop\PetLove\PetLove\PetLoveWeb\bin\PetLoveWeb.pdb
+C:\Users\Andrés\Desktop\PetLove\PetLove\PetLoveWeb\bin\EntityFramework.dll
+C:\Users\Andrés\Desktop\PetLove\PetLove\PetLoveWeb\bin\EntityFramework.xml
+C:\Users\Andrés\Desktop\PetLove\PetLove\PetLoveWeb\obj\Debug\PetLoveWeb.csprojResolveAssemblyReference.cache
+C:\Users\Andrés\Desktop\PetLove\PetLove\PetLoveWeb\obj\Debug\PetLoveWeb.dll
+C:\Users\Andrés\Desktop\PetLove\PetLove\PetLoveWeb\obj\Debug\PetLoveWeb.pdb

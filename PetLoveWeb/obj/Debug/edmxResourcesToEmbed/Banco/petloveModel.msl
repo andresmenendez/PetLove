@@ -4,54 +4,54 @@
     <EntitySetMapping Name="tb_animal">
       <EntityTypeMapping TypeName="petloveModel.tb_animal">
         <MappingFragment StoreEntitySet="tb_animal">
-          <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
-          <ScalarProperty Name="Nome" ColumnName="Nome" />
-          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-          <ScalarProperty Name="Nascimento" ColumnName="Nascimento" />
-          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
-          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
-          <ScalarProperty Name="IDRaca" ColumnName="IDRaca" />
-          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
           <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="IDRaca" ColumnName="IDRaca" />
+          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Nascimento" ColumnName="Nascimento" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tb_favoritos">
       <EntityTypeMapping TypeName="petloveModel.tb_favoritos">
         <MappingFragment StoreEntitySet="tb_favoritos">
-          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
-          <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
           <ScalarProperty Name="IDAnimalFavorito" ColumnName="IDAnimalFavorito" />
+          <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
+          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tb_fotos">
       <EntityTypeMapping TypeName="petloveModel.tb_fotos">
         <MappingFragment StoreEntitySet="tb_fotos">
-          <ScalarProperty Name="IDFoto" ColumnName="IDFoto" />
-          <ScalarProperty Name="Foto" ColumnName="Foto" />
           <ScalarProperty Name="IDAnimal" ColumnName="IDAnimal" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="IDFoto" ColumnName="IDFoto" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tb_racas">
       <EntityTypeMapping TypeName="petloveModel.tb_racas">
         <MappingFragment StoreEntitySet="tb_racas">
-          <ScalarProperty Name="IDRaca" ColumnName="IDRaca" />
-          <ScalarProperty Name="Nome" ColumnName="Nome" />
           <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="IDRaca" ColumnName="IDRaca" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tb_usuario">
       <EntityTypeMapping TypeName="petloveModel.tb_usuario">
         <MappingFragment StoreEntitySet="tb_usuario">
-          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
-          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-          <ScalarProperty Name="Nome" ColumnName="Nome" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Senha" ColumnName="Senha" />
           <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

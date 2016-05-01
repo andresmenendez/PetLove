@@ -1,7 +1,9 @@
 ﻿@if(Request.IsAuthenticated) {
-    <text>Welcome <strong>@User.Identity.Name</strong>!
+    <text>Bem-Vindo(a) <strong>@User.Identity.Name</strong>!
+    [ @Html.ActionLink("Meus Dados", "ChangePassword", "Account") ]
     [ @Html.ActionLink("Sair", "LogOff", "Account") ]</text>
 }
 else {
+    @:[ @Html.ActionLink("Cadastrar-se", "Register", "Account") ]
     @:[ @Html.ActionLink("Entrar", "LogOn", "Account") ]
 }

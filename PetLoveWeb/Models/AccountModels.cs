@@ -25,6 +25,19 @@ namespace PetLoveWeb.Models
         [Display(Name = "Confirm new password")]
         [Compare("NewPassword", ErrorMessage = "As senhas não são iguais.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Nome Completo")]
+        public string NomeCompleto { get; set; }
+
+        [Display(Name = "Usuário")]
+        public string UserName { get; set; }
+
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "E-mail")]
+        public string Email { get; set; }
+
+        public string Telefone { get; set; }
     }
 
     public class LogOnModel
