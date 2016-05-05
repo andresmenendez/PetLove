@@ -38,6 +38,12 @@ namespace PetLoveWeb.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.Racas = new SelectList
+                    (
+                        new List<SelectListItem>(),
+                        "Id_Raca",
+                        "NomeRaca"
+                    );
             return View();
         }
 
@@ -51,10 +57,40 @@ namespace PetLoveWeb.Controllers
             {
                 string userId = Membership.GetUser().ProviderUserKey.ToString();
                 model.Id_Usuario = Convert.ToInt32(userId);
-                GerenciadorAnimal.GetInstance().Inserir(model);
-                return RedirectToAction("Index");
+                //Redirecionar para a tela de localização
+                //return RedirectToAction("Index");
             }
-
+            else
+            {
+                if (model.Tipo == "C")
+                {
+                    ViewBag.Racas = new SelectList
+                    (
+                        GerenciadorRaca.GetInstance().ObterCaes(),
+                        "Id_Raca",
+                        "NomeRaca"
+                    );
+                }
+                else if (model.Tipo == "G")
+                {
+                    ViewBag.Racas = new SelectList
+                    (
+                        GerenciadorRaca.GetInstance().ObterGatos(),
+                        "Id_Raca",
+                        "NomeRaca"
+                    );
+                }
+                else
+                {
+                    ViewBag.Racas = new SelectList
+                        (
+                            new List<SelectListItem>(),
+                            "Id_Raca",
+                            "NomeRaca"
+                        );
+                }
+            }
+            
             return View(model);
         }
 

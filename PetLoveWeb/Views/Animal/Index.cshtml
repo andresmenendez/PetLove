@@ -9,7 +9,6 @@
 @using GridMvc.Html
 @using GridMvc.Sorting
 
-<h2>Turmas</h2>
 <p>
     @Html.ActionLink("Novo Animal", "Create")
 </p>
@@ -31,23 +30,19 @@
 
         columns.Add(animal => animal.Categoria)
                 .Titled("Categoria")
-                .SetWidth(200)
-                .Filterable(true);
+                .SetWidth(200);
 
         columns.Add(animal => animal.Sexo)
                 .Titled("Sexo")
-                .SetWidth(200)
-                .Filterable(true);
+                .SetWidth(200);
 
-        columns.Add(animal => animal.Nascimento.ToShortDateString())
+        columns.Add(animal => animal.Nascimento)
                 .Titled("Data de Nascimento")
-                .SetWidth(250)
-                .Filterable(true);
+                .SetWidth(250);
 
         columns.Add(animal => animal.Nome_Raca)
                 .Titled("Raça")
-                .SetWidth(250)
-                .Filterable(true);
+                .SetWidth(250);
 
     }).WithPaging(5).Sortable()
 </div>

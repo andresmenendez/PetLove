@@ -73,7 +73,18 @@ namespace PetLoveWeb.Gerenciadores
             return GetQuery();
         }
 
-        
+        public IEnumerable<RacaModel> ObterCaes()
+        {
+            IEnumerable<RacaModel> users = GetQuery().Where(racaModel => racaModel.Tipo == "C");
+            return users;
+        }
+
+        public IEnumerable<RacaModel> ObterGatos()
+        {
+            IEnumerable<RacaModel> users = GetQuery().Where(racaModel => racaModel.Tipo == "G");
+            return users;
+        }
+
         /// <summary>
         /// Obtém um autor
         /// </summary>

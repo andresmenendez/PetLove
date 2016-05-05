@@ -9,6 +9,5 @@ C:\Users\Andrés\Desktop\PetLove\PetLove\PetLoveWeb\bin\PetLoveWeb.pdb
 C:\Users\Andrés\Desktop\PetLove\PetLove\PetLoveWeb\bin\EntityFramework.dll
 C:\Users\Andrés\Desktop\PetLove\PetLove\PetLoveWeb\bin\GridMvc.dll
 C:\Users\Andrés\Desktop\PetLove\PetLove\PetLoveWeb\bin\EntityFramework.xml
-C:\Users\Andrés\Desktop\PetLove\PetLove\PetLoveWeb\obj\Debug\PetLoveWeb.csprojResolveAssemblyReference.cache
 C:\Users\Andrés\Desktop\PetLove\PetLove\PetLoveWeb\obj\Debug\PetLoveWeb.dll
 C:\Users\Andrés\Desktop\PetLove\PetLove\PetLoveWeb\obj\Debug\PetLoveWeb.pdb

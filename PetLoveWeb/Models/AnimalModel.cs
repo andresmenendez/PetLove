@@ -32,9 +32,13 @@ namespace PetLoveWeb.Models
 
         public int Id_Usuario { get; set; }
 
+        public string Tipo { get; set; }
+
         [Required]
         public int Id_Raca { get; set; }
 
         public int Nome_Raca { get; set; }
+
+        public int Racas { get; set; }
     }
 }

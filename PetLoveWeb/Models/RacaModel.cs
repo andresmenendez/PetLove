@@ -9,7 +9,6 @@ namespace PetLoveWeb.Models
     [Serializable]
     public class RacaModel
     {
-        [Required]
         public int Id_Raca { get; set; }
 
         public string NomeRaca { get; set; }

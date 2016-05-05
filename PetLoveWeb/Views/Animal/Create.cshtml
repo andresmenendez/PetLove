@@ -23,19 +23,68 @@
         </div>
 
         <div class="editor-label">
+            @Html.Label("Categoria")
+        </div>
+        <div class="editor-field">
+            @Html.RadioButton("Categoria", "A") Adotar
+            @Html.RadioButton("Categoria", "V") Vender
+            @Html.RadioButton("Categoria", "C") Cruzar
+            @Html.ValidationMessageFor(model => model.Categoria)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Nascimento)
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Nascimento)
+            @Html.TextBoxFor(model => model.Nascimento, new { MaxLength = 45 })
             @Html.ValidationMessageFor(model => model.Nascimento)
         </div>
 
+        <div class="editor-label">
+            @Html.Label("Sexo")
+        </div>
+        <div class="editor-field">
+            @Html.RadioButton("Sexo", "M") Macho
+            @Html.RadioButton("Sexo", "F") Fêmea
+            @Html.ValidationMessageFor(model => model.Sexo)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Tipo")
+        </div>
+        <div class="editor-field">
+        @{
+           List<SelectListItem> listItems= new List<SelectListItem>();
+           listItems.Add(new SelectListItem
+                {
+                  Text = "Cães",
+                  Value = "C"
+                });
+           listItems.Add(new SelectListItem
+                {
+                    Text = "Gatos",
+                    Value = "G"
+                });
+        }
+
+        @Html.DropDownListFor(model => model.Tipo, listItems, "Selecione o Tipo", new { onchange = "this.form.submit();"})
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Raça")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Racas", null, "Selecione", new { id = "ddlRacas" })
+            @Html.ValidationMessageFor(model => model.Racas)
+        </div>
+
         <p>
-            <input type="submit" value="Create" />
+            <input class="but but-success but-shadow but-rc" type="submit" value="Escolher Localização" />
+
         </p>
+        <div>
+            @Html.ActionLink("Cancelar", "Index")
+        </div>
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Retornar", "Index")
-</div>

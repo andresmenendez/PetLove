@@ -128,11 +128,11 @@ namespace PetLoveWeb.Gerenciadores
             return users.ElementAtOrDefault(0);
         }
 
-        public AnimalModel ObterPorUsuario(int idUsuario)
+        public IEnumerable<AnimalModel> ObterPorUsuario(int idUsuario)
         {
             IEnumerable<AnimalModel> users = GetQuery().Where(animalModel => animalModel.Id_Usuario == idUsuario);
 
-            return users.ElementAtOrDefault(0);
+            return users;
         }
 
         /// <summary>
